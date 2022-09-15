@@ -1,35 +1,32 @@
 import random
-
-top_of_range = input("Type a number: ")
-
-if top_of_range.isdigit():
-    top_of_range = int(top_of_range)
-
-    if top_of_range <= 0:
-        print('Please type a number larger than 0 next time.')
-        quit()
-else:
-    print('Please type a number next time.')
-    quit()
-
-random_number = random.randint(0, top_of_range)
-guesses = 0
+target=input("please creat a 5digit number from 0 to 4")
 
 while True:
-    guesses += 1
-    user_guess = input("Make a guess: ")
-    if user_guess.isdigit():
-        user_guess = int(user_guess)
-    else:
-        print('Please type a number next time.')
-        continue
+ options = ["1", "2", "3", "0" , "4"]
+ random_number = random.randint(0,4)
+ computer_pick1 = options[random_number]
 
-    if user_guess == random_number:
-        print("You got it!")
-        break
-    elif user_guess > random_number:
-        print("You were above the number!")
-    else:
-        print("You were below the number!")
+ options = ["1", "2", "3", "0", "4"]
+ random_number = random.randint (0,4)
+ computer_pick2 = options[random_number]
 
-print("You got it in", guesses, "guesses")
+ options = ["1", "2", "3", "0" , "4"]
+ random_number = random.randint(0,4)
+ computer_pick3 = options[random_number]
+ 
+ options = ["1", "2", "3","0", "4"]
+ random_number = random.randint(0,4)
+ computer_pick4 = options[random_number]
+
+ options = ["1", "2", "3","0", "4"]
+ random_number = random.randint(0,4)
+ computer_pick5 = options[random_number]
+
+ password = computer_pick1+computer_pick2 +computer_pick3+computer_pick4+computer_pick5
+ print(password)
+ if password == target :
+    print("it's a match")
+    print('the number that you picked is')
+    print(password)
+    break
+ 
