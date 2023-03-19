@@ -1,0 +1,105 @@
+import random
+import time 
+import os
+#def casion_balance():
+def spin():
+    combine = ['A', 'B', 'C']
+    t_combine1 = random.choice(combine)
+    t_combine2 = random.choice(combine)
+    t_combine3 = random.choice(combine)
+    slot = t_combine1,t_combine2,t_combine3
+    return slot
+def main():
+
+    print("Welcome to the casino game slot machine")
+    charge= input ('how much you want to charge $$$')
+    confirme=input(f"you want to charge {charge}$$$(Y/N)")
+    if confirme.lower() == "y":
+        wallet = int(charge)
+        print(f'Your wallet have {wallet}$')
+        for i in range(20):
+            time.sleep(0.1)
+            print(f"{'█'*(i+1)} {(i+1)*5}%", end="\r")
+    else:
+        print('you are stupid ')
+        quit()
+    while True:
+        # Ask user for bet amount and autoplay
+        bet_amount, autoplay = map(int, input("Enter bet amount and autoplay count (separated by a space): ").split())
+        if bet_amount > wallet:
+            print("You don't have enough money.")
+            print("Your wallet has ", wallet)
+            continue
+
+        # Play the game
+        for i in range(autoplay):
+            print(f"\nRound {i+1}/{autoplay}:")
+            result = spin()
+            if result == ('A','A','A'):
+                bet = bet_amount*2
+                  # Add any winnings back to wallet
+                print(result)
+                wallet += bet
+                print('you win')
+                print(f'you have {wallet}$')
+                for i in range(20):
+                    time.sleep(0.1)
+                    print(f"{'█'*(i+1)} {(i+1)*5}%", end="\r")
+                    print('you have won ')
+                    quit()
+                time.sleep(2)
+                os.system('cls')
+                spin()
+            if result == ('B','B','B'):
+                bet = bet_amount*2
+                  # Add any winnings back to wallet
+                print(result)
+                wallet += bet
+                print('you win')
+                print(f'you have {wallet}$')
+                for i in range(20):
+                    time.sleep(0.1)
+                    print(f"{'█'*(i+1)} {(i+1)*5}%", end="\r")
+                    quit()
+                time.sleep(2)
+                os.system('cls')
+                spin()
+            if result == ('C','C','C'):
+                bet = bet_amount*2
+                  # Add any winnings back to wallet
+                print(result)
+                wallet += bet
+                print('you win')
+                print(f'you have {wallet}$')
+                for i in range(20):
+                    time.sleep(0.1)
+                    print(f"{'█'*(i+1)} {(i+1)*5}%", end="\r")
+                    quit()
+                time.sleep(2)
+                os.system('cls')
+                spin()
+            elif result != ('C','C','C') or ('A','A','A') or ('B','B','B'):
+                print(result)
+                print("You lose.")
+                wallet -= bet_amount
+                print('you have ', wallet)
+                if wallet < bet_amount:
+                    print("You don't have enough money.")
+                    print("Your wallet has ", wallet)
+                    charge = input("do you want to charge")
+                    if charge.lower() == "y":
+                        main()
+                    else:
+                        quit()
+
+            time.sleep(2)
+            os.system('cls')
+
+        # Ask user if they want to play again
+        play_again = input("Do you want to play again? (y/n) ")
+        if play_again.lower() != "y":
+            break
+
+    print("Thanks for playing!")
+
+main()
